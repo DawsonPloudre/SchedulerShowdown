@@ -58,3 +58,36 @@ int RoundRobin(const int& curTime, const vector<Process>& procList, const int& t
     // return back the index of the process to schedule next
     return idx;
 }
+
+int SRT(const int& curTime, const vector<Process>& procList){
+    int shortestTime = 0;
+    static int shortestPOS = -1;
+    static bool running;
+
+    if(curTime == 0 || (shortestPOS >= 0 && procList.at(shortestPOS).isDone)){ running = false; }
+
+    if(!running){
+    //Find the process with the shortest totaltimeNeeded
+         for(int i = 0; i < procList.size(); i++){
+            if(!procList.at(i).isDone && procList.at(i).startTime <= curTime && procList.at(i).totalTimeNeeded < shortestTime){
+                shortestTime = procList.at(i).totalTimeNeeded;
+                shortestPOS = i;
+            }
+         }
+    }
+    
+    if(shortestPOS > -1){
+        running = true;
+    }
+
+    //Process the process
+    return shortestPOS;
+}
+
+int SPN(const int& curTime, const vector<Process>& procList){
+
+}
+
+int HRRN(const int& curTime, const vector<Process>& procList){
+
+}
