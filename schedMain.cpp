@@ -103,30 +103,21 @@ int main(int argc, char* argv[])
             //Shortest Process Next
             case 2:
 
-				//////////////////////////////
-                // TODO set procIdx to the proper index for the next process to be scheduled using SPN
-
-				//////////////////////////////
+				procIdx = SPN(curTime, procList);
 
                 break;
 
             //Shortest Remaining Time
             case 3:
 
-				//////////////////////////////
-                // TODO set procIdx to the proper index for the next process to be scheduled using SRT
-
-				//////////////////////////////
+				procIdx = SRT(curTime, procList);
 
                 break;
 
             //Highest Response Ratio Next
             case 4:
 
-				//////////////////////////////
-                // TODO set procIdx to the proper index for the next process to be scheduled using HRRN
-
-				//////////////////////////////
+				procIdx = HRRN(curTime, procList);
 
                 break;
         }
@@ -205,6 +196,14 @@ int main(int argc, char* argv[])
 	float averageNormTurnTime = 0.0;
 
 	/////////////////////////////////////
+
+    for(int i = 0; i < procList.size(); i++){
+        procList.at(i).turnaroundTime = procList.at(i).timeFinished - procList.at(i).startTime;
+        procList.at(i).normalizedTurnaroundTime = procList.at(i).turnaroundTime / procList.at(i).timeScheduled;
+        averageNormTurnTime += procList.at(i).normalizedTurnaroundTime;
+    }
+
+    averageNormTurnTime /= procList.size();
 
 
 
