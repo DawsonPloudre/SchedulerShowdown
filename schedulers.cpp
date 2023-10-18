@@ -59,7 +59,7 @@ int RoundRobin(const int& curTime, const vector<Process>& procList, const int& t
     return idx;
 }
 
-int SRT(const int& curTime, const vector<Process>& procList){
+int SPN(const int& curTime, const vector<Process>& procList){
     int shortestTime = 0;
     static int shortestPOS = -1;
     static bool running;
@@ -84,7 +84,7 @@ int SRT(const int& curTime, const vector<Process>& procList){
     return shortestPOS;
 }
 
-int SPN(const int& curTime, const vector<Process>& procList){
+int SRT(const int& curTime, const vector<Process>& procList){
     int shortestTime = 0;
     static int shortestPOS = -1;
     //Find the process with the shortest totaltimeNeeded
