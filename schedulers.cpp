@@ -82,12 +82,12 @@ int SPN(const int& curTime, const vector<Process>& procList){
 }
 
 int SRT(const int& curTime, const vector<Process>& procList){
-    int shortestTime = 0;
+    int shortestTime = 9999;
     static int shortestPOS = -1;
     //Find the process with the shortest totaltimeNeeded
          for(size_t i = 0; i < procList.size(); i++){
-            if(!procList.at(i).isDone && procList.at(i).startTime <= curTime && procList.at(i).totalTimeNeeded < shortestTime){
-                shortestTime = procList.at(i).totalTimeNeeded;
+            if((!procList.at(i).isDone) && (procList.at(i).startTime <= curTime) && ((procList.at(i).totalTimeNeeded - procList.at(i).timeScheduled) < shortestTime)){
+                shortestTime = (procList.at(i).totalTimeNeeded - procList.at(i).timeScheduled);
                 shortestPOS = i;
             }
          }
