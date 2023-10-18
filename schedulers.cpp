@@ -62,20 +62,20 @@ int RoundRobin(const int& curTime, const vector<Process>& procList, const int& t
 int SPN(const int& curTime, const vector<Process>& procList){
     int shortestTime = -1;
     static int shortestPOS;
-    static bool running = false;
+    static int running;
 
-    if(procList.at(shortestPOS).isDone){ running = false; }
+    if(procList.at(shortestPOS).isDone){ running = 0; }
 
-    if(running == false){
+    if(running == 0){
     //Find the process with the shortest totaltimeNeeded
          for(size_t i = 0; i < procList.size(); i++){
             if((!procList.at(i).isDone) && (procList.at(i).startTime <= curTime) && (procList.at(i).totalTimeNeeded < shortestTime)){
                 shortestTime = procList.at(i).totalTimeNeeded;
                 shortestPOS = i;
-                running = true;
             }
          }
     }
+    running++;
 
     //Process the process
     return shortestPOS;
