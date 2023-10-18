@@ -97,7 +97,7 @@ int SRT(const int& curTime, const vector<Process>& procList){
 }
 
 int HRRN(const int& curTime, const vector<Process>& procList){
-    int shortestRR = 9999;
+    int highRR = -9999;
     static int shortestPOS;
     static int running;
 
@@ -106,8 +106,8 @@ int HRRN(const int& curTime, const vector<Process>& procList){
     if(running == 0){
     //Find the process with the shortest totaltimeNeeded
          for(size_t i = 0; i < procList.size(); i++){
-            if((!procList.at(i).isDone) && (procList.at(i).startTime <= curTime) && ((((curTime - procList.at(i).startTime) + procList.at(i).totalTimeNeeded) / procList.at(i).totalTimeNeeded) < shortestRR)){
-                shortestRR = (((curTime - procList.at(i).startTime) + procList.at(i).totalTimeNeeded) / procList.at(i).totalTimeNeeded);
+            if((!procList.at(i).isDone) && (procList.at(i).startTime <= curTime) && ((((curTime - procList.at(i).startTime) + procList.at(i).totalTimeNeeded) / procList.at(i).totalTimeNeeded) > highRR)){
+                highRR = (((curTime - procList.at(i).startTime) + procList.at(i).totalTimeNeeded) / procList.at(i).totalTimeNeeded);
                 shortestPOS = i;
             }
          }
@@ -117,4 +117,3 @@ int HRRN(const int& curTime, const vector<Process>& procList){
     //Process the process
     return shortestPOS;
 }
-
