@@ -51,4 +51,10 @@ inline void readInProcList(const string& fname, vector<Process>& procList)
 
 int RoundRobin(const int& curTime, const vector<Process>& procList, const int& timeQuantum);
 
+int SRT(const int& curTime, const vector<Process>& procList);
+
+int SPN(const int& curTime, const vector<Process>& procList);
+
+int HRRN(const int& curTime, const vector<Process>& procList);
+
 #endif
