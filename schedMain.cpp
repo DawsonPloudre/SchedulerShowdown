@@ -197,7 +197,7 @@ int main(int argc, char* argv[])
 
 	/////////////////////////////////////
 
-    for(int i = 0; i < procList.size(); i++){
+    for(size_t i = 0; i < procList.size(); i++){
         procList.at(i).turnaroundTime = procList.at(i).timeFinished - procList.at(i).startTime;
         procList.at(i).normalizedTurnaroundTime = procList.at(i).turnaroundTime / procList.at(i).timeScheduled;
         averageNormTurnTime += procList.at(i).normalizedTurnaroundTime;
