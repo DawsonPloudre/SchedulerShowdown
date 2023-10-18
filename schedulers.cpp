@@ -64,7 +64,7 @@ int SPN(const int& curTime, const vector<Process>& procList){
     static int shortestPOS;
     static bool running;
 
-    if(curTime == 0 || ((shortestPOS >= 0) && (procList.at(shortestPOS).isDone)){ running = false; }
+    if(curTime == 0 || ((shortestPOS >= 0) && (procList.at(shortestPOS).isDone))){ running = false; }
 
     if(!running){
     //Find the process with the shortest totaltimeNeeded
