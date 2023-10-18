@@ -60,7 +60,7 @@ int RoundRobin(const int& curTime, const vector<Process>& procList, const int& t
 }
 
 int SPN(const int& curTime, const vector<Process>& procList){
-    int shortestTime = -1;
+    int shortestTime = 9999;
     static int shortestPOS;
     static int running;
 
